@@ -1,1 +1,1 @@
-AIOP Labs
+Algorithms & Data Structure --- Labs
