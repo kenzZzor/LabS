@@ -1,0 +1,78 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "rus");
+    int size_A, size_B, k = 0;
+    cout << "Введите размер массива A:" << endl;
+    cin >> size_A;
+
+    int* A = new int[size_A];
+
+    cout << "Введите элементы массива A:" << endl;
+    for (int i = 0; i < size_A; i++) {
+        cin >> A[i];
+    }
+
+    cout << "Введите размер массива B:" << endl;
+    cin >> size_B;
+
+    int* B = new int[size_B];
+
+    cout << "Введите элементы массива B:" << endl;
+    for (int i = 0; i < size_B; i++) {
+        cin >> B[i];
+    }
+
+    // Максимальный размер массива C
+    int maxC_Size = size_A + size_B;
+    int* C = new int[maxC_Size];
+
+    // Ищем элементы, которые есть в A и не в B
+    for (int i = 0; i < size_A; i++) {
+        bool isInB = false;
+        for (int j = 0; j < size_B; j++) {
+            if (A[i] == B[j]) {
+                isInB = true;
+                break;
+            }
+        }
+        if (!isInB) {
+            C[k] = A[i];
+            k++;
+        }
+    }
+
+    // Ищем элементы, которые есть в B и не в A
+    for (int i = 0; i < size_B; i++) {
+        bool isInA = false;
+        for (int j = 0; j < size_A; j++) {
+            if (B[i] == A[j]) {
+                isInA = true;
+                break;
+            }
+        }
+        if (!isInA) {
+            C[k] = B[i];
+            k++;
+        }
+    }
+
+
+
+
+
+    // Вывод элементов массива C
+    cout << "Элементы массивов A и B, которые не являются общими для них:" << endl;
+    for (int i = 0; i < k; i++) {
+        cout << C[i] << " ";
+    }
+    cout << endl;
+
+    delete[] A;
+    delete[] B;
+    delete[] C;
+
+    return 0;
+}
+
