@@ -1,16 +1,24 @@
-﻿#include <iostream>
+#include <iostream>
+
+int NumberOfZeroes(int n) {
+    int count = 0; 
+    while (n > 0) {
+        int digit = n % 10; 
+        if (digit == 0) {
+            count++; 
+        }
+        n /= 10;
+    }
+    return count;
+}
 
 int main() {
     int N;
-    std::cin >> N;
+    std::cin >> N; 
 
-    int factorial = 1; 
+    int result = NumberOfZeroes(N); 
 
-    for (int i = 1; i <= N; i++) {
-        factorial *= i;
-    }
-
-    std::cout << factorial << std::endl;
+    std::cout << result << std::endl; 
 
     return 0;
 }

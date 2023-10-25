@@ -1,12 +1,11 @@
-﻿#include <iostream>
+#include <iostream>
 using namespace std;
 
 int main() {
     int N;
     cin >> N; 
 
-    int* heights = new int[N];
-
+    int heights[N];
     for (int i = 0; i < N; i++) {
         cin >> heights[i]; 
     }
@@ -14,18 +13,17 @@ int main() {
     int PetyaHeight;
     cin >> PetyaHeight; 
 
-    int position_Petya = 1; 
+    int position = N + 1; 
 
     for (int i = 0; i < N; i++) {
-        if (PetyaHeight <= heights[i]) {
-            position_Petya = i + 1;
-            break; 
+        if (PetyaHeight > heights[i]) {
+            position = i + 1; 
+            break;
         }
     }
 
-    cout << position_Petya << endl;
-
-    delete[] heights;
+    cout << position << endl; 
 
     return 0;
 }
+
